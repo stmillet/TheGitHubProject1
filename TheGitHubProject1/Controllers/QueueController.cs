@@ -40,7 +40,7 @@ namespace TheGitHubProject1.Controllers
         {
             foreach (Object obj in myQueue)
             {
-                Console.WriteLine(obj);
+                ViewBag.Output = "<p>" + "Hello" + "</p>";
             }
 
             return View("Index");
