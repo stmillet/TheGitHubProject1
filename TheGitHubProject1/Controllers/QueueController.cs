@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace TheGitHubProject1.Controllers
 {
-    public class StackController : Controller
+    public class QueueController : Controller
     {
-        // GET: Stack
+        // GET: Queue
         public ActionResult Index()
         {
-            return new RedirectResult("https://www.byu.edu");
+            return View();
         }
     }
 }
