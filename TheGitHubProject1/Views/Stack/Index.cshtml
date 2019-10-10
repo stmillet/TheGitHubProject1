@@ -11,12 +11,13 @@
                 onclick="w3_close()">
             Close &times;
         </button>
-        <a href="#" class="w3-bar-item w3-button">Add One Time to Stack</a>
-        <a href="#" class="w3-bar-item w3-button">Add Huge list of Items to Stack</a>
-        <a href="#" class="w3-bar-item w3-button">Display Stack</a>
-        <a href="#" class="w3-bar-item w3-button">Clear Stack</a>
-        <a href="#" class="w3-bar-item w3-button">Search Stack</a>
-        <a href="@Url.Action("Index", "Home")" class="w3-bar-item w3-button">Return to main menu</a>
+        <a href="@Url.Action("AddItem", "Stack")" class="w3-bar-item w3-button">Add One Item to Dictionary</a>
+        <a href="@Url.Action("AddMultipleItems", "Stack")" class="w3-bar-item w3-button">Add Huge List of Items to Dictionary</a>
+        <a href="@Url.Action("DisplayItems", "Stack")" class="w3-bar-item w3-button">Display Dictionary</a>
+        <a href="@Url.Action("DeleteItems", "Stack")" class="w3-bar-item w3-button">Delete from Dictionary</a>
+        <a href="@Url.Action("ClearItems", "Stack")" class="w3-bar-item w3-button">Clear Dictionary</a>
+        <a href="@Url.Action("SearchItems", "Stack")" class="w3-bar-item w3-button">Search Dictionary</a>
+        <a href="@Url.Action("Index", "Home")" class="w3-bar-item w3-button">Return to Main Menu</a>
     </div>
 
     <div id="main">

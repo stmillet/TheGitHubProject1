@@ -1,8 +1,16 @@
-﻿body {
-}
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}
+﻿
+body 
+    {
+        background-image: url("Graphics/Mountain.jpg");
+    }
+
+.center 
+    {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+
+
