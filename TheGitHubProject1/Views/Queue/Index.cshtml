@@ -15,13 +15,13 @@
                 onclick="w3_close()">
             Close &times;
         </button>
-        <a href="#" class="w3-bar-item w3-button">Add one item to Queue</a>
-        <a href="#" class="w3-bar-item w3-button">Add Huge List of Items to Queue</a>
-        <a href="#" class="w3-bar-item w3-button">Display Queue</a>
-        <a href="#" class="w3-bar-item w3-button">Delete from Queue</a>
-        <a href="#" class="w3-bar-item w3-button">Clear Queue</a>
-        <a href="#" class="w3-bar-item w3-button">Search Queue</a>
-        <a href="~/Home/Index.cshtml" class="w3-bar-item w3-button">Return to Main Menu</a>
+        <a href="@Url.Action("addItem", "Queue")" class="w3-bar-item w3-button">Add one item to Queue</a>
+        <a href="@Url.Action("addListItem", "Queue")" class="w3-bar-item w3-button">Add Huge List of Items to Queue</a>
+        <a href="@Url.Action("displayQueue", "Queue")" class="w3-bar-item w3-button">Display Queue</a>
+        <a href="@Url.Action("deleteFromQueue", "Queue")" class="w3-bar-item w3-button">Delete from Queue</a>
+        <a href="@Url.Action("clearQueue", "Queue")" class="w3-bar-item w3-button">Clear Queue</a>
+        <a href="@Url.Action("searchQueue", "Queue")" class="w3-bar-item w3-button">Search Queue</a>
+        <a href="@Url.Action("Index", "Stack")" class="w3-bar-item w3-button">Return to Main Menu</a>
     </div>
 
     <div id="main">
