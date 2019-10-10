@@ -11,7 +11,7 @@ namespace TheGitHubProject1.Controllers
         // GET: Stack
         public ActionResult Index()
         {
-            return new RedirectResult("https://www.byu.edu");
+            return View();
         }
     }
 }
