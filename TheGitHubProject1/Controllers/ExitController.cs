@@ -11,7 +11,7 @@ namespace TheGitHubProject1.Controllers
         // GET: Exit
         public ActionResult Index()
         {
-            return View();
+            return new RedirectResult("https://www.byu.edu");
         }
     }
 }
