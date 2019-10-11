@@ -1,6 +1,7 @@
 ﻿<title>W3.CSS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="~/Content/StyleSheet1.css" />
 <body>
 
     <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
@@ -8,12 +9,12 @@
                 onclick="w3_close()">
             Close &times;
         </button>
-        <a href="#" class="w3-bar-item w3-button">Add one item to Queue</a>
-        <a href="#" class="w3-bar-item w3-button">Add Huge List of Items to Queue</a>
-        <a href="#" class="w3-bar-item w3-button">Display Queue</a>
-        <a href="#" class="w3-bar-item w3-button">Delete from Queue</a>
-        <a href="#" class="w3-bar-item w3-button">Clear Queue</a>
-        <a href="#" class="w3-bar-item w3-button">Search Queue</a>
+        <a href="@Url.Action("AddItem", "Dictionary")" class="w3-bar-item w3-button">Add One Item to Dictionary</a>
+        <a href="@Url.Action("AddMultipleItems", "Dictionary")" class="w3-bar-item w3-button">Add Huge List of Items to Dictionary</a>
+        <a href="@Url.Action("DisplayItems", "Dictionary")" class="w3-bar-item w3-button">Display Dictionary</a>
+        <a href="@Url.Action("DeleteItems", "Dictionary")" class="w3-bar-item w3-button">Delete from Dictionary</a>
+        <a href="@Url.Action("ClearItems", "Dictionary")" class="w3-bar-item w3-button">Clear Dictionary</a>
+        <a href="@Url.Action("SearchItems", "Dictionary")" class="w3-bar-item w3-button">Search Dictionary</a>
         <a href="@Url.Action("Index", "Home")" class="w3-bar-item w3-button">Return to Main Menu</a>
     </div>
 
@@ -22,19 +23,10 @@
         <div class="w3-teal">
             <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
             <div class="w3-container">
-                <h1>My Page</h1>
+                <h1>Dictionaries</h1>
             </div>
+            <img id="dictionImage" src="https://images2.minutemediacdn.com/image/upload/c_crop,h_1193,w_2121,x_0,y_202/f_auto,q_auto,w_1100/v1554701564/shape/mentalfloss/574505.istock-482021560.jpg" />
         </div>
-
-        <img src="img_car.jpg" alt="Car" style="width:100%">
-
-        <div class="w3-container">
-            <p>In this example, the sidebar is hidden (style="display:none")</p>
-            <p>It is shown when you click on the menu icon in the top left corner.</p>
-            <p>When it is opened, it shifts the page content to the right.</p>
-            <p>We use JavaScript to add a 25% left margin to the div element with id="main" when this happens. The value "25%" matches the width of the sidebar.</p>
-        </div>
-
     </div>
 
     <script>
@@ -52,5 +44,6 @@ function w3_close() {
     </script>
 
 </body>
+
 
 
