@@ -25,5 +25,18 @@ namespace TheGitHubProject1.Controllers
 
             return View("Index");
         }
+
+        public ActionResult AddMultipleItems()
+        {
+            return View("Index");
+        }
+
+        public ActionResult DisplayItems()
+        {
+
+            return View("Index");
+        }
+
+        public 
     }
 }
