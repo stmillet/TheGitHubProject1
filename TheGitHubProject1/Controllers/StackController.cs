@@ -8,7 +8,7 @@ namespace TheGitHubProject1.Controllers
     public class StackController : Controller
     {
         // GET: Stack
-        Stack<string> myStack = new Stack<string>();
+        static Stack<string> myStack = new Stack<string>();
         public ActionResult Index()
         {
             return View();
@@ -18,6 +18,7 @@ namespace TheGitHubProject1.Controllers
         public ActionResult AddItem()
         {
             myStack.Push("New Entry" + (myStack.Count + 1));
+            ViewBag.MyStack = myStack;
             return View("Index");
         }
 
@@ -36,7 +37,7 @@ namespace TheGitHubProject1.Controllers
         //Function to display queue
         public ActionResult DisplayStack()
         {
-            myStack.Push("MY STACK IS WORKING");
+            
             foreach (String str in myStack)
             {
                 ViewBag.DisplayStack += str; //figure out how to display this on the webpage
