@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
-
+    <h1>STACK</h1>
     <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
         <button class="w3-bar-item w3-button w3-large"
                 onclick="w3_close()">
             Close &times;
         </button>
-        <a href="@Url.Action("AddItem", "Stack")" class="w3-bar-item w3-button">Add One Item to Dictionary</a>
-        <a href="@Url.Action("AddMultipleItems", "Stack")" class="w3-bar-item w3-button">Add Huge List of Items to Dictionary</a>
-        <a href="@Url.Action("DisplayItems", "Stack")" class="w3-bar-item w3-button">Display Dictionary</a>
-        <a href="@Url.Action("DeleteItems", "Stack")" class="w3-bar-item w3-button">Delete from Dictionary</a>
-        <a href="@Url.Action("ClearItems", "Stack")" class="w3-bar-item w3-button">Clear Dictionary</a>
-        <a href="@Url.Action("SearchItems", "Stack")" class="w3-bar-item w3-button">Search Dictionary</a>
+        <a href="@Url.Action("AddItem", "Stack")" class="w3-bar-item w3-button">Add One Item to Stack</a>
+        <a href="@Url.Action("AddListItems", "Stack")" class="w3-bar-item w3-button">Add Huge List of Items to Stack</a>
+        <a href="@Url.Action("DisplayStack", "Stack")" class="w3-bar-item w3-button">Display Stack</a>
+        <a href="@Url.Action("DeleteFromStack", "Stack")" class="w3-bar-item w3-button">Delete from Stack</a>
+        <a href="@Url.Action("ClearStack", "Stack")" class="w3-bar-item w3-button">Clear Stack</a>
+        <a href="@Url.Action("SearchStack", "Stack")" class="w3-bar-item w3-button">Search Stack</a>
         <a href="@Url.Action("Index", "Home")" class="w3-bar-item w3-button">Return to Main Menu</a>
     </div>
 
@@ -29,9 +29,22 @@
             </div>*@
         </div>
 
-
         <div class="w3-container">
-           <p>Click on the side navigation to find options to manipulate the stack variable</p>
+            <h3>
+                What is the Stack?
+            </h3>
+           @ViewBag.DisplayStack()
+            <p>
+                A stack is a data structure that is similiar to an array, however it uses LIFO (last in, first out). Only the top element is visible/ accessible to the user at a time. 
+                It includes a Push() method (add elements to the top of the stack), a Pop() method (removes the top element from stack), and a Peep method that allows the user to view the top element without adding or deleting.
+            </p>
+        </div>
+        <div class="w3-container">
+           <p > Click on the side navigation to manipulate the stack variable</p>
+            @ViewBag.Output
+        </div>
+        <div>
+            <img src="https://images.squarespace-cdn.com/content/v1/586d7f70197aea9819139fa2/1512837460951-TMVX7S9SF0BR0ATING45/ke17ZwdGBToddI8pDm48kD4WQoh8rLOKE3v-8jEdMHZZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpyxRPaYWTi7pr2ifObSaLfusgXAlPsLy9NNKb6gsMy-2l3WO_2uhpl4YSoGhkeZTvY/balance.jpg?format=1000w"/> 
         </div>
 
     </div>
@@ -52,3 +65,4 @@ function w3_close() {
 
 </body>
 
+</html>
