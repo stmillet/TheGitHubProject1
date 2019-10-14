@@ -19,6 +19,7 @@ namespace TheGitHubProject1.Controllers
         public ActionResult addItem()
         {
             myQueue.Enqueue("New Entry" + (myQueue.Count + 1));
+            ViewBag.DisplayMessage = "Added 1 item to queue.";
 
             return View("Index");
         }
@@ -31,16 +32,25 @@ namespace TheGitHubProject1.Controllers
             {
                 myQueue.Enqueue("New Entry" + (myQueue.Count + 1));
             }
-
+            ViewBag.DisplayMessage = "Added 2000 items to queue.";
             return View("Index");
         }
 
         //Function to display queue
         public ActionResult displayQueue()
         {
-            foreach (Object obj in myQueue)
+            int queueCount = myQueue.Count;
+            ViewBag.DisplayMessage = "Displaying Queue:";
+            foreach (String str in myQueue)
             {
-                ViewBag.Output = "<p>" + "Hello" + "</p>";
+                if (queueCount > 0)
+                {
+                    ViewBag.myQueue += str + " ";
+                }
+                else
+                {
+                    ViewBag.DisplayMessage = "There are no items in the Queue.";
+                }
             }
 
             return View("Index");
@@ -49,7 +59,15 @@ namespace TheGitHubProject1.Controllers
         //Function to delete item from queue
         public ActionResult deleteFromQueue()
         {
-
+            if (myQueue.Count == 0)
+            {
+                Viewbag.DisplayMessage = "The Queue is empty. There is nothing to display.";
+            }
+            else
+            {
+                myQueue.Dequeue();
+                ViewBag.DisplayMessage = "Item deleted from stack.";
+            }
             return View("Index");
         }
 
@@ -57,17 +75,30 @@ namespace TheGitHubProject1.Controllers
         public ActionResult clearQueue()
         {
             myQueue.Clear();
-
+            ViewBag.DisplayMessage = "Queue successfully cleared.";
             return View("Index");
         }
 
         //Function to search queue
         public ActionResult searchQueue()
         {
+            string searchString = "New Entry 5";
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
             sw.Start();
 
             //loop to do all the work
+            for (int iCount = 0; iCount < myQueue.Count; iCount++)
+            {
+                bool queueContains = myQueue.Contains(searchString);
+                if (queueContains == "true")
+                {
+                    ViewBag.DisplayMessage = "Queue contains the element searched for.";
+                }
+                else
+                {
+                    ViewBag.DisplayMessage = "Queue does not contain the element searched for.";
+                }
+            }
 
             sw.Stop();
             TimeSpan ts = sw.Elapsed;
