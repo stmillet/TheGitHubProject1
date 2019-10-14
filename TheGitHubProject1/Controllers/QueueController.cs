@@ -8,15 +8,15 @@ namespace TheGitHubProject1.Controllers
 {
     public class QueueController : Controller
     {
-        // GET: Queue
-        Queue<string> myQueue = new Queue<string>();
+        // GET: Queue
+        Queue<string> myQueue = new Queue<string>();
         public ActionResult Index()
         {
             return View();
         }
 
-        //Function to add queue item
-        public ActionResult addItem()
+        //Function to add queue item
+        public ActionResult addItem()
         {
             myQueue.Enqueue("New Entry" + (myQueue.Count + 1));
             ViewBag.DisplayMessage = "Added 1 item to queue.";
@@ -24,8 +24,8 @@ namespace TheGitHubProject1.Controllers
             return View("Index");
         }
 
-        //Function to add queue items
-        public ActionResult addListItems()
+        //Function to add queue items
+        public ActionResult addListItems()
         {
             myQueue.Clear();
             for (int iCount = 0; iCount <= 2000; iCount++)
@@ -36,8 +36,8 @@ namespace TheGitHubProject1.Controllers
             return View("Index");
         }
 
-        //Function to display queue
-        public ActionResult displayQueue()
+        //Function to display queue
+        public ActionResult displayQueue()
         {
             int queueCount = myQueue.Count;
             ViewBag.DisplayMessage = "Displaying Queue:";
@@ -56,8 +56,8 @@ namespace TheGitHubProject1.Controllers
             return View("Index");
         }
 
-        //Function to delete item from queue
-        public ActionResult deleteFromQueue()
+        //Function to delete item from queue
+        public ActionResult deleteFromQueue()
         {
             if (myQueue.Count == 0)
             {
@@ -71,39 +71,36 @@ namespace TheGitHubProject1.Controllers
             return View("Index");
         }
 
-        //Function to clear queue
-        public ActionResult clearQueue()
+        //Function to clear queue
+        public ActionResult clearQueue()
         {
             myQueue.Clear();
             ViewBag.DisplayMessage = "Queue successfully cleared.";
             return View("Index");
         }
 
-        //Function to search queue
-        public ActionResult searchQueue()
+        //Function to search queue
+        public ActionResult searchQueue()
         {
-            string searchString = "New Entry 5";
-            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            sw.Start();
-
-            //loop to do all the work
-            for (int iCount = 0; iCount < myQueue.Count; iCount++)
+            if (myQueue.Count() > 0)
             {
-                bool queueContains = myQueue.Contains(searchString);
-                if (queueContains == "true")
+                System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+                sw.Start();
+
+                string searchString = "New Entry 5";
+                if (myQueue.Contains(searchString))
                 {
-                    ViewBag.DisplayMessage = "Queue contains the element searched for.";
+                    ViewBag.DisplayMessage = "The queue contains a variable with a key \"New Entry 5\"";
                 }
                 else
                 {
-                    ViewBag.DisplayMessage = "Queue does not contain the element searched for.";
+                    ViewBag.DisplayMessage = "The queue does NOT contain a variable with a key \"New Entry 5\"";
                 }
+
+                sw.Stop();
+                TimeSpan ts = sw.Elapsed;
+                ViewBag.StopWatch = ts;
             }
-
-            sw.Stop();
-            TimeSpan ts = sw.Elapsed;
-            ViewBag.StopWatch = ts;
-
             return View("Index");
         }
     }
