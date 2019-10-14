@@ -20,10 +20,10 @@ namespace TheGitHubProject1.Controllers
 
         public ActionResult AddItem()
         {
-            int numVariables = myDictionary.Count();
-            myDictionary.Add(numVariables.ToString(), numVariables + 1);
+            int numVariables = myDictionary.Count() + 1;
+            myDictionary.Add("New Entry " + numVariables.ToString(), numVariables);
 
-            ViewBag.Output = "<p>" + myDictionary[numVariables.ToString()] + "</p>";
+            ViewBag.Output = "<p>" + myDictionary["New Entry " + numVariables] + "</p>";
 
             return View("Index");
         }
@@ -56,7 +56,7 @@ namespace TheGitHubProject1.Controllers
             else
             {
                 myDictionary.Remove(myDictionary.Keys.First());
-                ViewBag.Output = "Removed the first Element from the Dictionary.";
+                ViewBag.Output = "Removed the first element from the dictionary.";
             }
 
             return View("Index");
@@ -72,7 +72,25 @@ namespace TheGitHubProject1.Controllers
 
         public ActionResult SearchItems()
         {
+            if (myDictionary.Count() > 0)
+            {
+                System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+                sw.Start();
 
+                string searchVar = "New Entry 5";
+                if(myDictionary.ContainsKey(searchVar))
+                {
+                    ViewBag.Output = "The dictionary contains a variable with a key \"New Entry 5\"";
+                }
+                else
+                {
+                    ViewBag.Output = "The dictionary does NOT contain a variable with a key \"New Entry 5\"";
+                }
+
+                sw.Stop();
+                TimeSpan ts = sw.Elapsed;
+                ViewBag.StopWatch = ts;
+            }
             return View("Index");
         }
     }
