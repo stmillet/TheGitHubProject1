@@ -39,17 +39,16 @@ namespace TheGitHubProject1.Controllers
         //Function to display queue
         public ActionResult displayQueue()
         {
-            int queueCount = myQueue.Count;
-            ViewBag.DisplayMessage = "Displaying Queue:";
-            foreach (String str in myQueue)
+            if (myQueue.Count <= 0)
             {
-                if (queueCount > 0)
+                ViewBag.DisplayMessage = "Queue is empty, there is nothing to display";
+            }
+            else
+            {
+                ViewBag.DisplayMessage = "Displaying Queue:";
+                foreach (String str in myQueue)
                 {
-                    ViewBag.myQueue += str + " ";
-                }
-                else
-                {
-                    ViewBag.DisplayMessage = "There are no items in the Queue.";
+                    ViewBag.myQueue += str + " " + "<br>";
                 }
             }
 
@@ -61,12 +60,12 @@ namespace TheGitHubProject1.Controllers
         {
             if (myQueue.Count == 0)
             {
-                ViewBag.DisplayMessage = "The Queue is empty. There is nothing to display.";
+                ViewBag.DisplayMessage = "Queue is empty. There is nothing to display.";
             }
             else
             {
                 myQueue.Dequeue();
-                ViewBag.DisplayMessage = "Item deleted from stack.";
+                ViewBag.DisplayMessage = "Item deleted from queue.";
             }
             return View("Index");
         }
@@ -74,8 +73,15 @@ namespace TheGitHubProject1.Controllers
         //Function to clear queue
         public ActionResult clearQueue()
         {
-            myQueue.Clear();
-            ViewBag.DisplayMessage = "Queue successfully cleared.";
+            if (myQueue.Count == 0)
+            {
+                ViewBag.DisplayMessage = "The Queue is empty. There is nothing to clear.";
+            }
+            else
+            {
+                myQueue.Clear();
+                ViewBag.DisplayMessage = "Queue successfully cleared.";
+            }
             return View("Index");
         }
 
@@ -90,11 +96,11 @@ namespace TheGitHubProject1.Controllers
                 string searchString = "New Entry 5";
                 if (myQueue.Contains(searchString))
                 {
-                    ViewBag.DisplayMessage = "The queue contains a variable with a key \"New Entry 5\"";
+                    ViewBag.DisplayMessage = "Found \"New Entry 5\"";
                 }
                 else
                 {
-                    ViewBag.DisplayMessage = "The queue does NOT contain a variable with a key \"New Entry 5\"";
+                    ViewBag.DisplayMessage = "Could not find \"New Entry 5\" in Queue";
                 }
 
                 sw.Stop();
@@ -103,7 +109,7 @@ namespace TheGitHubProject1.Controllers
             }
             else
             {
-                ViewBag.DisplayMessage = "Queue is empty, can not search for \"New Entry 5\"";
+                ViewBag.DisplayMessage = "Queue is empty, cannot search for \"New Entry 5\"";
             }
             return View("Index");
         }

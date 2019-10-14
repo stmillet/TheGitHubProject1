@@ -112,7 +112,7 @@ namespace TheGitHubProject1.Controllers
             }
             else
             {
-                ViewBag.DisplayMessage = "Stack is empty, can not search for \"New Entry 5\"";
+                ViewBag.DisplayMessage = "Stack is empty, cannot search for \"New Entry 5\"";
             }
 
             sw.Stop();
