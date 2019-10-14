@@ -17,7 +17,7 @@ namespace TheGitHubProject1.Controllers
         //Function to add queue item
         public ActionResult AddItem()
         {
-            myStack.Push("New Entry" + (myStack.Count + 1));
+            myStack.Push("New Entry " + (myStack.Count + 1));
             ViewBag.DisplayMessage = "Added 1 item to list.";
             return View("Index");
         }
@@ -28,7 +28,7 @@ namespace TheGitHubProject1.Controllers
             myStack.Clear();
             for (int iCount = 0; iCount < 2000; iCount++)
             {
-                myStack.Push("New Entry" + (myStack.Count + 1));
+                myStack.Push("New Entry " + (myStack.Count + 1));
             }
             ViewBag.DisplayMessage = "Added 2000 items to list.";
             return View("Index");
@@ -37,10 +37,17 @@ namespace TheGitHubProject1.Controllers
         //Function to display queue
         public ActionResult DisplayStack()
         {
-            ViewBag.DisplayMessage = "Displaying Stack:";
-            foreach (String str in myStack)
+            if(myStack.Count <=0)
             {
-                ViewBag.myStack += str + " "; 
+                ViewBag.DisplayMessage = "Stack is empty, there is nothing to display";
+            }
+            else
+            {
+                ViewBag.DisplayMessage = "Displaying Stack:";
+                foreach (String str in myStack)
+                {
+                    ViewBag.myStack += str + " " + "<br>";
+                }
             }
             //where this displays on the webpage is up to us. GREG doesn't like to view.
             return View("Index");
@@ -51,23 +58,31 @@ namespace TheGitHubProject1.Controllers
         {
             //if the count is 0 tell them there is nothing to delete
             //
-            if (myStack.Count <= 0)
+            if (myStack.Count == 0)
             {
                 ViewBag.DisplayMessage = "The Stack is empty. There is nothing to display.";
             }
             else
             {
                 myStack.Pop();
+                ViewBag.DisplayMessage = "Item deleted from stack.";
             }
-            ViewBag.DisplayMessage = "Item deleted from stack.";
+           
             return View("Index");
         }
 
         //Function to clear queue
         public ActionResult ClearStack()
         {
-            myStack.Clear();
-            ViewBag.DisplayMessage = "Stack successfully cleared.";
+            if (myStack.Count == 0)
+            {
+                ViewBag.DisplayMessage = "The Stack is empty. There is nothing to clear.";
+            }
+            else
+            {
+                myStack.Clear();
+                ViewBag.DisplayMessage = "Stack successfully cleared.";
+            }
             return View("Index");
         }
 
@@ -76,27 +91,28 @@ namespace TheGitHubProject1.Controllers
         {
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
             sw.Start();
-
-            //loop to do all the work
+           
             if (myStack.Count > 0)
             {
                 string searchTerm = "New Entry 5";
-                if(myStack.Contains(searchTerm))
+                if (myStack.Contains(searchTerm))
                 {
                     sw.Stop();
                     TimeSpan totalTime = sw.Elapsed;
-                    ViewBag.StopWatch = totalTime;
-                    ViewBag.isFound = "Found";
+                    ViewBag.isFound = "Found \"New Entry 5\"";
+                    ViewBag.StopWatch = "Total time spent looking for New Entry 5: " + totalTime;
                 }
                 else
                 {
                     sw.Stop();
                     TimeSpan totalTime = sw.Elapsed;
                     ViewBag.StopWatch = totalTime;
-                    ViewBag.isFound = "Could not find New Entry 5 in Stack";
+                    ViewBag.isFound = "Could not find \"New Entry 5\" in Stack";
                 }
-                
-
+            }
+            else
+            {
+                ViewBag.DisplayMessage = "Stack is empty, can not search for \"New Entry 5\"";
             }
 
             sw.Stop();
