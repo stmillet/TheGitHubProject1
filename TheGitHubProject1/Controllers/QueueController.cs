@@ -38,9 +38,17 @@ namespace TheGitHubProject1.Controllers
         //Function to display queue
         public ActionResult displayQueue()
         {
-            foreach (Object obj in myQueue)
+            int queueCount = myQueue.Count;
+            foreach (var i in myQueue.ToArray())
             {
-                ViewBag.Output = "<p>" + "Hello" + "</p>";
+                if (queueCount > 0)
+                {
+                    ViewBag.Output = "<p>" + myQueue[i] + "</p>";
+                }
+                else
+                {
+                    ViewBag.Output = "There are no items in the Queue.";
+                }
             }
 
             return View("Index");
@@ -49,7 +57,15 @@ namespace TheGitHubProject1.Controllers
         //Function to delete item from queue
         public ActionResult deleteFromQueue()
         {
-
+            if (myQueue.Count == 0)
+            {
+                Viewbag.Output = "The Dictionary is empty. There is nothing to display.";
+            }
+            else
+            {
+                myQueue.Dequeue();
+                ViewBag.Output = "Removed the first Element from the Dictionary.";
+            }
             return View("Index");
         }
 
@@ -64,10 +80,23 @@ namespace TheGitHubProject1.Controllers
         //Function to search queue
         public ActionResult searchQueue()
         {
+            string searchString = "New Entry 5";
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
             sw.Start();
 
             //loop to do all the work
+            for (int iCount = 0; iCount < myQueue.Count; iCount++)
+            {
+                bool queueContains = myQueue.Contains(searchString);
+                if (queueContains == "true")
+                {
+                    ViewBag.Output = "Queue contains the element searched for.";
+                }
+                else
+                {
+                    ViewBag.Output = "Queue does not contain the element searched for.";
+                }
+            }
 
             sw.Stop();
             TimeSpan ts = sw.Elapsed;
