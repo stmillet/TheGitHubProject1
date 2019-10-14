@@ -1,8 +1,4 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-}
-
 <h2>Index</h2>
 <html>
 <title>Queue</title>
@@ -43,7 +39,9 @@
         </div>
 
     </div>
-
+    <p>@ViewBag.DisplayMessage</p>
+    <p>@ViewBag.StopWatch</p>
+    <p>@ViewBag.myQueue</p>
     <script>
         function w3_open() {
             document.getElementById("main").style.marginLeft = "25%";
