@@ -42,14 +42,23 @@ namespace TheGitHubProject1.Controllers
             {
                 ViewBag.myStack += str + " "; 
             }
+            //where this displays on the webpage is up to us. GREG doesn't like to view.
             return View("Index");
         }
 
         //Function to delete item from queue
         public ActionResult DeleteFromStack()
         {
-            //ask the user which item they would like to add to stack (alertbox?)
+            //if the count is 0 tell them there is nothing to delete
             //
+            if (myStack.Count <= 0)
+            {
+                ViewBag.DisplayMessage = "The Stack is empty. There is nothing to display.";
+            }
+            else
+            {
+                myStack.Pop();
+            }
             ViewBag.DisplayMessage = "Item deleted from stack.";
             return View("Index");
         }
@@ -69,6 +78,26 @@ namespace TheGitHubProject1.Controllers
             sw.Start();
 
             //loop to do all the work
+            if (myStack.Count > 0)
+            {
+                string searchTerm = "New Entry 5";
+                if(myStack.Contains(searchTerm))
+                {
+                    sw.Stop();
+                    TimeSpan totalTime = sw.Elapsed;
+                    ViewBag.StopWatch = totalTime;
+                    ViewBag.isFound = "Found";
+                }
+                else
+                {
+                    sw.Stop();
+                    TimeSpan totalTime = sw.Elapsed;
+                    ViewBag.StopWatch = totalTime;
+                    ViewBag.isFound = "Could not find New Entry 5 in Stack";
+                }
+                
+
+            }
 
             sw.Stop();
             TimeSpan ts = sw.Elapsed;
