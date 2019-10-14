@@ -19,6 +19,7 @@ namespace TheGitHubProject1.Controllers
         public ActionResult addItem()
         {
             myQueue.Enqueue("New Entry" + (myQueue.Count + 1));
+            ViewBag.DisplayMessage = "Added 1 item to queue.";
 
             return View("Index");
         }
@@ -31,7 +32,7 @@ namespace TheGitHubProject1.Controllers
             {
                 myQueue.Enqueue("New Entry" + (myQueue.Count + 1));
             }
-
+            ViewBag.DisplayMessage = "Added 2000 items to queue.";
             return View("Index");
         }
 
@@ -39,15 +40,16 @@ namespace TheGitHubProject1.Controllers
         public ActionResult displayQueue()
         {
             int queueCount = myQueue.Count;
-            foreach (var i in myQueue.ToArray())
+            ViewBag.DisplayMessage = "Displaying Queue:";
+            foreach (String str in myQueue)
             {
                 if (queueCount > 0)
                 {
-                    ViewBag.Output = "<p>" + myQueue[i] + "</p>";
+                    ViewBag.myQueue += str + " ";
                 }
                 else
                 {
-                    ViewBag.Output = "There are no items in the Queue.";
+                    ViewBag.DisplayMessage = "There are no items in the Queue.";
                 }
             }
 
@@ -59,12 +61,12 @@ namespace TheGitHubProject1.Controllers
         {
             if (myQueue.Count == 0)
             {
-                Viewbag.Output = "The Dictionary is empty. There is nothing to display.";
+                Viewbag.DisplayMessage = "The Queue is empty. There is nothing to display.";
             }
             else
             {
                 myQueue.Dequeue();
-                ViewBag.Output = "Removed the first Element from the Dictionary.";
+                ViewBag.DisplayMessage = "Item deleted from stack.";
             }
             return View("Index");
         }
@@ -73,7 +75,7 @@ namespace TheGitHubProject1.Controllers
         public ActionResult clearQueue()
         {
             myQueue.Clear();
-
+            ViewBag.DisplayMessage = "Queue successfully cleared.";
             return View("Index");
         }
 
@@ -90,11 +92,11 @@ namespace TheGitHubProject1.Controllers
                 bool queueContains = myQueue.Contains(searchString);
                 if (queueContains == "true")
                 {
-                    ViewBag.Output = "Queue contains the element searched for.";
+                    ViewBag.DisplayMessage = "Queue contains the element searched for.";
                 }
                 else
                 {
-                    ViewBag.Output = "Queue does not contain the element searched for.";
+                    ViewBag.DisplayMessage = "Queue does not contain the element searched for.";
                 }
             }
 
