@@ -60,7 +60,7 @@ namespace TheGitHubProject1.Controllers
             //
             if (myStack.Count == 0)
             {
-                ViewBag.DisplayMessage = "The Stack is empty. There is nothing to display.";
+                ViewBag.DisplayMessage = "The Stack is empty. There is nothing to delete.";
             }
             else
             {
