@@ -61,7 +61,7 @@ namespace TheGitHubProject1.Controllers
         {
             if (myQueue.Count == 0)
             {
-                Viewbag.DisplayMessage = "The Queue is empty. There is nothing to display.";
+                ViewBag.DisplayMessage = "The Queue is empty. There is nothing to display.";
             }
             else
             {
