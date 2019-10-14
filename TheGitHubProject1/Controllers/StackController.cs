@@ -15,7 +15,7 @@ namespace TheGitHubProject1.Controllers
             return View();
         }
 
-        //Function to add queue item
+        //Function to add stack item
         public ActionResult addItem()
         {
             myStack.Push("New Entry" + (myStack.Count + 1));
@@ -23,7 +23,7 @@ namespace TheGitHubProject1.Controllers
             return View("Index");
         }
 
-        //Function to add queue items
+        //Function to add stack items
         public ActionResult addListItems()
         {
             myStack.Clear();
@@ -35,7 +35,7 @@ namespace TheGitHubProject1.Controllers
             return View("Index");
         }
 
-        //Function to display queue
+        //Function to display stack
         public ActionResult displayStack()
         {
             foreach (Object obj in myStack)
@@ -46,14 +46,14 @@ namespace TheGitHubProject1.Controllers
             return View("Index");
         }
 
-        //Function to delete item from queue
+        //Function to delete item from stack
         public ActionResult deleteFromStack()
         {
 
             return View("Index");
         }
 
-        //Function to clear queue
+        //Function to clear stack
         public ActionResult clearStack()
         {
             myStack.Clear();
@@ -61,7 +61,7 @@ namespace TheGitHubProject1.Controllers
             return View("Index");
         }
 
-        //Function to search queue
+        //Function to search stack
         public ActionResult searchStack()
         {
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
