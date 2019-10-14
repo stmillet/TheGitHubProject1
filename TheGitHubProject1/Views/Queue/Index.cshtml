@@ -25,23 +25,24 @@
         <div class="w3-teal">
             <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
             <div class="w3-container">
-                <h1>My Page</h1>
             </div>
         </div>
 
-        <img src="https://images.app.goo.gl/qGDk7dkK6m4c8PB37" alt="Car" style="width:100%">
-
         <div class="w3-container">
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
+            <h3>
+                Queue Results:
+            </h3>
+            <p>@ViewBag.DisplayMessage</p>
+            <p>@ViewBag.StopWatch</p>
+            <p>@ViewBag.myQueue</p>
         </div>
 
+        <div>
+            <p> Click on the side navigation to manipulate the queue variable</p>
+            <img src="https://images.app.goo.gl/tk4BHYHnCrd2UA858" alt="queue" style="width:100%">
+        </div>
     </div>
-    <p>@ViewBag.DisplayMessage</p>
-    <p>@ViewBag.StopWatch</p>
-    <p>@ViewBag.myQueue</p>
+
     <script>
         function w3_open() {
             document.getElementById("main").style.marginLeft = "25%";
