@@ -99,7 +99,11 @@ namespace TheGitHubProject1.Controllers
 
                 sw.Stop();
                 TimeSpan ts = sw.Elapsed;
-                ViewBag.StopWatch = ts;
+                ViewBag.StopWatch = "Total time spent looking for New Entry 5: " + ts;
+            }
+            else
+            {
+                ViewBag.DisplayMessage = "Queue is empty, can not search for \"New Entry 5\"";
             }
             return View("Index");
         }
