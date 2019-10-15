@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="~/Content/StyleSheet1.css" />
 <body>
-
+    <h1>DICTIONARY</h1>
     <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
         <button class="w3-bar-item w3-button w3-large"
                 onclick="w3_close()">
@@ -23,13 +23,22 @@
         <div class="w3-teal">
             <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
             <div class="w3-container">
-                <h1>Dictionaries</h1>
             </div>
         </div>
-    </div>
-    <div>
-        @*<img id="dictionImage" src="https://images2.minutemediacdn.com/image/upload/c_crop,h_1193,w_2121,x_0,y_202/f_auto,q_auto,w_1100/v1554701564/shape/mentalfloss/574505.istock-482021560.jpg" />*@
-        @ViewBag.Output
+
+        <div class="w3-container">
+            <h3>
+                Dictionary Results:
+            </h3>
+            <p>@ViewBag.DisplayMessage</p>
+            <p>@ViewBag.StopWatch</p>
+            <p>@Html.Raw((String)ViewBag.myQueue)</p>
+        </div>
+
+        <div>
+            <p> Click on the side navigation to manipulate the dictionary variable</p>
+            <img src="https://images2.minutemediacdn.com/image/upload/c_crop,h_1193,w_2121,x_0,y_202/f_auto,q_auto,w_1100/v1554701564/shape/mentalfloss/574505.istock-482021560.jpg" alt="dictionary" style="width:100%">
+        </div>
     </div>
 
     <script>
