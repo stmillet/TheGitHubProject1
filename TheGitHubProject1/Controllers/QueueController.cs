@@ -18,7 +18,7 @@ namespace TheGitHubProject1.Controllers
         //Function to add queue item
         public ActionResult addItem()
         {
-            myQueue.Enqueue("New Entry" + (myQueue.Count + 1));
+            myQueue.Enqueue("New Entry" + (myQueue.Count() + 1));
             ViewBag.DisplayMessage = "Added 1 item to queue.";
 
             return View("Index");
@@ -30,7 +30,7 @@ namespace TheGitHubProject1.Controllers
             myQueue.Clear();
             for (int iCount = 0; iCount <= 2000; iCount++)
             {
-                myQueue.Enqueue("New Entry" + (myQueue.Count + 1));
+                myQueue.Enqueue("New Entry" + (myQueue.Count() + 1));
             }
             ViewBag.DisplayMessage = "Added 2000 items to queue.";
             return View("Index");
@@ -39,7 +39,7 @@ namespace TheGitHubProject1.Controllers
         //Function to display queue
         public ActionResult displayQueue()
         {
-            if (myQueue.Count <= 0)
+            if (myQueue.Count() <= 0)
             {
                 ViewBag.DisplayMessage = "Queue is empty, there is nothing to display";
             }
@@ -58,7 +58,7 @@ namespace TheGitHubProject1.Controllers
         //Function to delete item from queue
         public ActionResult deleteFromQueue()
         {
-            if (myQueue.Count == 0)
+            if (myQueue.Count() == 0)
             {
                 ViewBag.DisplayMessage = "Queue is empty. There is nothing to display.";
             }
@@ -73,7 +73,7 @@ namespace TheGitHubProject1.Controllers
         //Function to clear queue
         public ActionResult clearQueue()
         {
-            if (myQueue.Count == 0)
+            if (myQueue.Count() == 0)
             {
                 ViewBag.DisplayMessage = "The Queue is empty. There is nothing to clear.";
             }
