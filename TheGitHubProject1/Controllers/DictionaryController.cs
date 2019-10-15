@@ -18,16 +18,17 @@ namespace TheGitHubProject1.Controllers
             return View();
         }
 
+        //Method adds an item to the dictionary
         public ActionResult AddItem()
         {
             int numVariables = myDictionary.Count() + 1;
             myDictionary.Add("New Entry " + numVariables.ToString(), numVariables);
-
-            ViewBag.Output = "<p>" + myDictionary["New Entry " + numVariables] + "</p>";
+            ViewBag.DisplayMessage = "Added 1 item to list.";
 
             return View("Index");
         }
 
+        //Method adds 2000 items to the dictionary after clearing it
         public ActionResult AddMultipleItems()
         {
             myDictionary.Clear();
@@ -37,39 +38,55 @@ namespace TheGitHubProject1.Controllers
                 int theVar = iCount + 1;
                 myDictionary.Add("New Entry " + theVar, theVar);
             }
+            ViewBag.DisplayMessage = "Added 2000 items to list.";
 
             return View("Index");
         }
 
+        //Method Displays the items in the Dictionary
         public ActionResult DisplayItems()
         {
+            if(myDictionary.Count() > 0)
+            {
+                foreach(KeyValuePair<string, int> str in myDictionary)
+                {
+                    ViewBag.myDictionary +="Key: " +str.Key + ", Value: " + str.Value + "<br>";
+                }
+            }
+            else
+            {
+                ViewBag.DisplayMessage = "Dictionary is empty, there is nothing to display";
+            }
 
             return View("Index");
         }
 
+        //Method Deletes the first item in the dictionary if it isn't empty
         public ActionResult DeleteItems()
         {
             if(myDictionary.Count() == 0)
             {
-                ViewBag.Output = "The Dictionary is empty. There is nothing to display.";
+                ViewBag.DisplayMessage = "The Dictionary is empty. There is nothing to display.";
             }
             else
             {
                 myDictionary.Remove(myDictionary.Keys.First());
-                ViewBag.Output = "Removed the first element from the dictionary.";
+                ViewBag.DisplayMessage = "Removed the first element from the dictionary.";
             }
 
             return View("Index");
         }
 
+        //Method Clears the dictionary
         public ActionResult ClearItems()
         {
             myDictionary.Clear();
-            ViewBag.Output = "The Dictionary has been cleared.";
+            ViewBag.DisplayMessage = "The Dictionary has been cleared.";
 
             return View("Index");
         }
 
+        //Method searchs the dictionary for an item with the key: New Entry 5
         public ActionResult SearchItems()
         {
             if (myDictionary.Count() > 0)
@@ -80,16 +97,20 @@ namespace TheGitHubProject1.Controllers
                 string searchVar = "New Entry 5";
                 if(myDictionary.ContainsKey(searchVar))
                 {
-                    ViewBag.Output = "The dictionary contains a variable with a key \"New Entry 5\"";
+                    ViewBag.DisplayMessage = "The dictionary contains a variable with a key \"New Entry 5\"";
                 }
                 else
                 {
-                    ViewBag.Output = "The dictionary does NOT contain a variable with a key \"New Entry 5\"";
+                    ViewBag.DisplayMessage = "The dictionary does NOT contain a variable with a key \"New Entry 5\"";
                 }
 
                 sw.Stop();
                 TimeSpan ts = sw.Elapsed;
                 ViewBag.StopWatch = ts;
+            }
+            else
+            {
+                ViewBag.DisplayMessage = "The dicitionary is empty. Cannot search through it.";
             }
             return View("Index");
         }
